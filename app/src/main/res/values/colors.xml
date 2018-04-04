@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="G1">#FFFFFF</color>
+    <color name="G2">#FFFF00</color>
+    <color name="G3">#FF00FF</color>
+    <color name="G4">#FF0000</color>
+    <color name="G5">#C0C0C0</color>
+    <color name="G6">#808080</color>
+    <color name="G7">#808000</color>
+    <color name="G8">#800080</color>
+    <color name="G9">#800000</color>
+    <color name="G10">#00FFFF</color>
+    <color name="G11">#00FF00</color>
+    <color name="G12">#008080</color>
+    <color name="G13">#008000</color>
+    <color name="G14">#0000FF</color>
+    <color name="G15">#000080</color>
+    <color name="G16">#51247e</color>
+    <color name="G17">#3F51B5</color>
+    <color name="G18">#303F9F</color>
+    <color name="G19">#FF4081</color>
+</resources>
