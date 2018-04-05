@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     private GridView list;
     int possible=0;
+    int del;
     int a[][]={{0,1,1,0,0,0},
             {0,1,2,2,0,0},
             {0,1,1,2,3,0},
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
             {17,15,12,14,0,16},
             {17,12,12,12,18,19}
     };
+
+    int excep[]={1,1,1,2,2,1,1,2,2,2};
     boolean bool[][]=new boolean[10][6];
 
     @Override
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 String str=button.getText().toString();
                 LinkedList<Blocks> linkedList=new LinkedList<>();
                 if(!str.equals("")) {
+                    del=Integer.valueOf(str);//Deleted number
                     for (int i = 0; i < 10; i++) {
                         for (int j = 0; j < 6; j++) {
                             if (a[i][j] == Integer.valueOf(str)) {
@@ -73,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                         Blocks start=linkedList.getFirst();
                         Blocks end = linkedList.getLast();
+                        if(del!=1&&del!=2)
+                            handlexception();
                         for (int p = 9; p >= 0; p--) {
                             for (int q = 0; q < 6; q++) {
                                 if (a[p][q] != 0)
@@ -90,6 +96,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void handlexception() {
+        for(int p=0;p<10;p++){
+            for(int q=0;q<6;q++){
+                if(a[p][q]==1||a[p][q]==2)
+                    a[p][q]=-1;
+            }
+        }
+    }
+
     /**
      * Reset boolean 2D arrays for next operation
      */
@@ -97,6 +112,16 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<10;i++){
             for(int j=0;j<6;j++){
                 bool[i][j]=false;
+            }
+        }
+        int ex=0;
+        if(del!=1&&del!=2) {
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 6; j++) {
+                    if (a[i][j] == -1) {
+                        a[i][j] = excep[ex++];
+                    }
+                }
             }
         }
     }
