@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private GridView list;
     int possible=0;
     int del;
+    int flag=0;
     int a[][]={{0,1,1,0,0,0},
             {0,1,2,2,0,0},
             {0,1,1,2,3,0},
@@ -58,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 LinkedList<Blocks> linkedList=new LinkedList<>();
                 if(!str.equals("")) {
                     del=Integer.valueOf(str);//Deleted number
+                    if(del==1||del==2){
+                        flag=1;
+                    }
                     for (int i = 0; i < 10; i++) {
                         for (int j = 0; j < 6; j++) {
                             if (a[i][j] == Integer.valueOf(str)) {
@@ -69,6 +73,9 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                     }
+                    /**
+                     * Configuring board
+                     */
                     while(possible<10) {
                         for (int f = 0; f < 10; f++) {
                             for (int g = 0; g < 6; g++) {
@@ -77,8 +84,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                         Blocks start=linkedList.getFirst();
                         Blocks end = linkedList.getLast();
-                        if(del!=1&&del!=2)
-                            handlexception();
+                        if(flag==0)
+                            if(del!=1&&del!=2)
+                                handlexception();
                         for (int p = 9; p >= 0; p--) {
                             for (int q = 0; q < 6; q++) {
                                 if (a[p][q] != 0)
@@ -91,11 +99,17 @@ public class MainActivity extends AppCompatActivity {
                     }
                     possible=0;
                 }
+                /**
+                 * Recreating the grid board
+                 */
                 setGridView();
             }
         });
     }
 
+    /**
+     * Handle the number 1 and 2 exception
+     */
     private void handlexception() {
         for(int p=0;p<10;p++){
             for(int q=0;q<6;q++){
@@ -115,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         int ex=0;
+        if(flag==0)
         if(del!=1&&del!=2) {
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 6; j++) {
